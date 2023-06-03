@@ -1,69 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* primary color */
+  --clr-p-11: #fef2f2;
+  --clr-p-10: #fee2e2;
+  --clr-p-9: #fecaca;
+  --clr-p-8: #fca5a5;
+  --clr-p-7: #f87171;
+  --clr-p-6: #ef4444;
+  --clr-p-5: #dc2626;
+  --clr-p-4: #b91c1c;
+  --clr-p-3: #991b1b;
+  --clr-p-2: #7f1d1d;
+  --clr-p-1: #450a0a;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* secondary color */
+  --clr-s-1: #111827;
+  --clr-s-2: #374151;
+  --clr-s-3: #4b5563;
+  --clr-s-4: #6b7280;
+  --clr-s-5: #9ca3af;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  /* greyShades */
+
+  /*  */
+  --transition: 0.4s all;
+
+  /* hero heading space */
+
+  --h2-pos: 9rem;
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --h2-pos: 0;
+  }
+}
+body {
+}
+
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  /* display: none; */
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: var(--clr-p-7);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
+  color: var(--clr-s-1);
+}
+/* a {
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+} */
+.section-center {
+  width: clamp(300px, 90%, 1300px);
+  margin: auto;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  text-decoration: none;
+  color: inherit;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+img {
+  width: 100%;
+  object-fit: cover;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
   cursor: pointer;
-  transition: border-color 0.25s;
+  border: none;
 }
-button:hover {
-  border-color: #646cff;
+.btn {
+  background-color: transparent;
+  outline: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--clr-1);
+  padding: 10px;
+  border: 1px solid var(--clr-s-1);
+  color: var(--clr-s-1);
+  border-radius: 5px;
+  transition: var(--transition);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn-solid {
+  background-color: var(--clr-s-1);
+  color: var(--clr-s-5);
+  text-transform: capitalize;
+  border: 1px solid var(--clr-s-1);
+}
+.btn-100 {
+  width: 100%;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn:hover {
+  background-color: var(--clr-s-1);
+  color: var(--clr-s-5);
+  border: 1px solid var(--clr-s-1);
+}
+
+.btn-solid:hover {
+  background-color: transparent;
+  color: var(--clr-s-1);
+}
+
+/* react-router */
+.active {
+  border-bottom: 1px solid var(--clr-p-3);
+}
+
+p {
+  margin: 0;
+}
+.underline {
+  background-color: var(--clr-p-6);
+  height: 5px;
+  width: 100px;
+  border-radius: 20px;
+}
+
+.btn-page {
+  background-color: var(--clr-p-7);
+  color: #fff;
+}
+
+.btn-page:hover {
+  background-color: #fff;
+  color: var(--clr-p-7);
 }
