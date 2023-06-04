@@ -24,10 +24,10 @@ const LoginPage = ({ logo, login }) => {
         <div className="hr-txt ">or</div>
 
         <div className="d-flex flex-wrap justify-content-center gap-4 mt-5">
-          <button className="btn btn-page rounded-5 px-5">
+          <button className="btn btn-page rounded-5 px-md-5 px-4">
             Login with Email
           </button>
-          <button className="btn rounded-5 px-4 btn-page-hov">
+          <button className="btn rounded-5 px-md-4 btn-page-hov">
             Create new account
           </button>
         </div>

@@ -31,8 +31,8 @@ const Contact = () => {
               dolores quis, ipsum, harum unde recusandae aperiam eligendi veniam
               ab nemo.
             </p>
-            <div className="d-flex flex-wrap">
-              <div className="col-6 p-4">
+            <div className="d-flex flex-wrap flex-wrap">
+              <div className="col-md-6 col-10 p-4">
                 <div>
                   <h4>TamilNadu, India</h4>
                   <div className="underline mb-3"></div>
@@ -41,7 +41,7 @@ const Contact = () => {
                   <p>Chennai East, TamilNadu </p>
                 </div>
               </div>
-              <div className="col-6 p-4">
+              <div className="col-md-6  col-10  p-4">
                 <div>
                   <h4>Opening Hours</h4>
                   <div className="underline mb-3"></div>
@@ -50,7 +50,7 @@ const Contact = () => {
                   <p>Sat & Sun: 9:30 am — 3:0 0 pm</p>
                 </div>
               </div>
-              <div className="col-6 p-4">
+              <div className="col-md-6 col-10  p-4">
                 <div>
                   <h4>Information</h4>
                   <div className="underline mb-3"></div>
@@ -58,7 +58,7 @@ const Contact = () => {
                   <p>skyReal@ygmail.com</p>
                 </div>
               </div>
-              <div className="col-6 p-4">
+              <div className="col-md-6 col-10  p-4">
                 <h4>Follow Us On</h4>
                 <div className="underline mb-3"></div>
                 <div className="d-flex gap-3">
@@ -79,7 +79,7 @@ const Contact = () => {
           </div>
 
           {/* form */}
-          <div className="col-lg-6 col-10 p-4">
+          <div className="col-lg-6 col-10  p-md-4">
             <div className=" p-4 bg-secondary-subtle rounded-3 ">
               <h2>Leave Us Your Info</h2>
               <div className="underline mb-4"></div>

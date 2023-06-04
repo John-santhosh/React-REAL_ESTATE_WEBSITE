@@ -40,7 +40,10 @@ const Pricing = () => {
         <div className="d-flex flex-wrap section-center mb-5">
           {Array.from({ length: 3 }, (_, ind) => {
             return (
-              <div key={ind} className="col-lg-4 col-md-8 col-12 m-auto p-4 ">
+              <div
+                key={ind}
+                className="col-lg-4 col-md-8 col-12 m-auto p-md-4 p-2"
+              >
                 <div className="text-center rounded-3 overflow-hidden border box">
                   <div className="">
                     {(ind === 0 && (

@@ -9,8 +9,8 @@ const Blog = () => {
     <>
       <PageHero page="Our Recent" details="Blog" />
       <Wrapper>
-        <div className="section-center text-secondary d-flex">
-          <div className="col-8 p-5">
+        <div className="section-center text-secondary d-flex flex-wrap">
+          <div className="col-md-8 p-lg-5 p-3">
             {blogs.map(({ img, title, id }) => {
               return (
                 <div key={id} className=" my-5 ">
@@ -20,7 +20,7 @@ const Blog = () => {
                     <strong> Admin</strong> | March 11, 2023 | Real-Estate
                   </div>
                   <h2>{title}</h2>
-                  <p className="mb-4">
+                  <p className="mb-5">
                     Working as a real estate agent offers a great deal of
                     variety. From working with different clients and visiting
                     many homes, you won&#39;t be doing the same thing every day.
@@ -35,7 +35,7 @@ const Blog = () => {
               );
             })}
           </div>
-          <div className="col-4 mt-5 pt-5">
+          <div className="col-md-4 mt-5 pt-5 mb-5">
             {/* search bar */}
             <div>
               <InputGroup className="mb-3">

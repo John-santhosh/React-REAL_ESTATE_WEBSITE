@@ -64,7 +64,7 @@ const Home = () => {
             return (
               <div
                 key={id}
-                className="col-12 col-sm-10 col-xl-4 col-lg-6 m-auto p-4"
+                className="col-12 col-sm-10 col-xl-4 col-lg-6 m-auto p-1 p-md-4"
               >
                 <div className="border">
                   <img src={img} alt="" />
@@ -121,7 +121,7 @@ const Home = () => {
                     <Icon className="text-white " />
                   </div>
                   <h2 className="title mt-3">{title}</h2>
-                  <p className="text-white">{award}</p>
+                  <p>{award}</p>
                 </div>
               );
             })}
@@ -194,13 +194,13 @@ const Wrapper = styled.section`
     margin: auto;
   }
   .awards {
-    background-color: var(--clr-p-9);
+    background-color: var(--clr-p-11);
   }
   .cards {
     .award {
-      background-color: var(--clr-p-5);
-      width: 100px;
-      height: 100px;
+      background-color: var(--clr-p-6);
+      width: 75px;
+      height: 75px;
       border-radius: 5px 50% 5px 50%;
       margin: auto;
       svg {

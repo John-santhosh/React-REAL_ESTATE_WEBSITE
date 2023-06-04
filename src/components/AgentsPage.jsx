@@ -47,7 +47,7 @@ const AgentsPage = () => {
                   })}
                 </div>
                 <div className="d-flex justify-content-between ">
-                  <button className="btn btn-page px-5">
+                  <button className="btn btn-page px-3 px-md-5">
                     <TbMessages /> Message
                   </button>
                   <button className="btn btn-solid px-4">
