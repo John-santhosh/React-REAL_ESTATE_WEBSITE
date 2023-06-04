@@ -150,7 +150,13 @@ p {
   background-color: #fff;
   color: var(--clr-p-7);
 }
-
+.btn-page-hov {
+  color: var(--clr-p-7);
+}
+.btn-page-hov:hover {
+  background-color: var(--clr-p-7);
+  color: #fff;
+}
 .justify-items-center {
   justify-items: center;
 }
@@ -160,4 +166,16 @@ p {
 }
 .side p:hover {
   padding-left: 0.5rem;
+}
+
+.hr-txt {
+  display: flex;
+  flex-direction: row;
+}
+.hr-txt::after,
+.hr-txt::before {
+  content: "";
+  flex: 1 0;
+  border-bottom: 2px solid var(--clr-p-7);
+  margin: auto;
 }

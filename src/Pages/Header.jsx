@@ -3,18 +3,27 @@ import styled from "styled-components";
 import { navLinks } from "../data";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/skyreal.svg";
+import login from "../assets/images/login.png";
 import { FaRegUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import { FcGoogle } from "react-icons/fc";
+import { AiFillFacebook } from "react-icons/ai";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import Modal from "react-bootstrap/Modal";
+import NavLinks from "../components/NavLinks";
+import LoginPage from "../components/LoginPage";
 const Header = () => {
   const [show, setShow] = useState(false);
-
+  const [modalShow, setModalShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
     <Wrapper className="py-3">
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className="section-center ">
         <div className="logo  ">
           <Link to="/" className="logo-img">
@@ -30,19 +39,7 @@ const Header = () => {
               <Offcanvas.Title>Offcanvas</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <div className="side">
-                {navLinks.map(({ id, url, text }) => {
-                  return (
-                    <p key={id} className="my-3" onClick={handleClose}>
-                      <NavLink to={url}>{text}</NavLink>
-                    </p>
-                  );
-                })}
-                <div className="login btn btn-100 mt-3" onClick={handleClose}>
-                  <FaRegUserCircle className="me-3" />
-                  Login
-                </div>
-              </div>
+              <NavLinks handleClose={handleClose} setModalShow={setModalShow} />
             </Offcanvas.Body>
           </Offcanvas>
         </div>
@@ -55,7 +52,13 @@ const Header = () => {
             );
           })}
         </ol>
-        <div className="login btn btn-solid  d-md-block d-none">
+        <div
+          onClick={() => {
+            handleClose();
+            setModalShow(true);
+          }}
+          className="login btn btn-solid  d-md-block d-none"
+        >
           <FaRegUserCircle className="me-3" />
           Login
         </div>
@@ -63,6 +66,23 @@ const Header = () => {
     </Wrapper>
   );
 };
+
+// modal
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="xl"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton></Modal.Header>
+      <Modal.Body className="p-0">
+        <LoginPage logo={logo} login={login} />
+      </Modal.Body>
+    </Modal>
+  );
+}
 const Wrapper = styled.nav`
   position: sticky;
   top: 0;
@@ -93,9 +113,6 @@ const Wrapper = styled.nav`
       height: 3.5rem;
       align-items: center;
       justify-items: center;
-      > * {
-        /* background-color: olive; */
-      }
     }
   }
   ol {

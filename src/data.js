@@ -171,3 +171,48 @@ export const agents = [
 ];
 
 // blogs
+export const blogs = [
+  {
+    id: nanoid(),
+    img: "https://images.unsplash.com/photo-1627640268913-91cfd4675b65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80",
+    title: "An own House for Everyone in ",
+  },
+  {
+    id: nanoid(),
+    img: "https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80",
+    title: "How to Become a Real Estate Agent? ",
+  },
+  {
+    id: nanoid(),
+    img: "https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    title: "How to Become a Real Estate Agent?",
+  },
+  {
+    id: nanoid(),
+    img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+    title: "How to Become a Real Estate Agent?",
+  },
+  {
+    id: nanoid(),
+    img: "https://images.unsplash.com/flagged/photo-1558954157-aa76c0d246c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80",
+    title: "How to Become a Real Estate Agent?",
+  },
+  {
+    id: nanoid(),
+    img: "https://images.pexels.com/photos/313691/pexels-photo-313691.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "How to Become a Real Estate Agent?",
+  },
+];
+
+export const tags = [
+  "realestate",
+  "homeforsale",
+  "openhouse",
+  "housegoals",
+  "luxuryrealestate",
+  "condoliving",
+  "property",
+  "newlisting",
+  "realestateadvice",
+  "realestateexperts",
+];
