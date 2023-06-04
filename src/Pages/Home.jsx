@@ -52,8 +52,8 @@ const Home = () => {
       </section>
       {/* new products */}
       <section className="section-center">
-        <h2>Recent Property Listed</h2>
-        <p>
+        <h2 className=" text-center">Recent Property Listed</h2>
+        <p className=" text-center m-auto w-lg-50 mb-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
@@ -174,7 +174,7 @@ const Wrapper = styled.section`
     > div {
       height: 100%;
       width: 100%;
-      background-color: #0000007e;
+      background-color: #6767675c;
       transition: var(--transition);
       top: 1rem;
       left: 1rem;

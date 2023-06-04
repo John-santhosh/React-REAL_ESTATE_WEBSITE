@@ -30,7 +30,7 @@ const Header = () => {
               <Offcanvas.Title>Offcanvas</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <div>
+              <div className="side">
                 {navLinks.map(({ id, url, text }) => {
                   return (
                     <p key={id} className="my-3" onClick={handleClose}>
@@ -64,8 +64,13 @@ const Header = () => {
   );
 };
 const Wrapper = styled.nav`
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: #fff;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
   .logo {
     display: grid;
     grid-template-columns: 1fr 1fr;

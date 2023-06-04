@@ -150,3 +150,14 @@ p {
   background-color: #fff;
   color: var(--clr-p-7);
 }
+
+.justify-items-center {
+  justify-items: center;
+}
+
+.side p {
+  transition: var(--transition);
+}
+.side p:hover {
+  padding-left: 0.5rem;
+}

@@ -140,7 +140,7 @@ export const agents = [
     id: nanoid(),
     img: agent3,
     dec: "Vizag, Andhra",
-    listing: 30,
+    listing: 70,
     name: "Jacob",
     socials: [FaFacebookF, FaLinkedin, FaTwitter, FaInstagram],
   },
@@ -148,7 +148,7 @@ export const agents = [
     id: nanoid(),
     img: agent4,
     dec: "Banglore, Karnataka",
-    listing: 30,
+    listing: 43,
     name: "Kiran raj",
     socials: [FaFacebookF, FaLinkedin, FaTwitter, FaInstagram],
   },
@@ -156,7 +156,7 @@ export const agents = [
     id: nanoid(),
     img: agent5,
     dec: "Chennai TamilNadu",
-    listing: 30,
+    listing: 35,
     name: "John",
     socials: [FaFacebookF, FaLinkedin, FaTwitter, FaInstagram],
   },
@@ -164,8 +164,10 @@ export const agents = [
     id: nanoid(),
     img: agent6,
     dec: "Mumbai, Maharashtra",
-    listing: 30,
+    listing: 26,
     name: "Rajesh",
     socials: [FaFacebookF, FaLinkedin, FaTwitter, FaInstagram],
   },
 ];
+
+// blogs
