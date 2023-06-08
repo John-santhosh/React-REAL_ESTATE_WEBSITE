@@ -3,10 +3,17 @@ export const reducer = (state, { type, payload }) => {
     return { ...state, current_user: payload, userLogged: true };
   }
   if (type == "SIGN_OUT_USER") {
-    return { ...state, current_user: "", userLogged: false };
+    return {
+      ...state,
+      current_user: "",
+      userLogged: false,
+      current_userDetails: {},
+    };
   }
 
-  return state;
+  if (type === "ADD_USER_DETAILS") {
+    return { ...state, current_userDetails: payload };
+  }
 
-  throw new Error(`no ${action.type} is specified`);
+  throw new Error(`no ${type} is specified`);
 };

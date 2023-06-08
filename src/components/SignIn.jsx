@@ -22,7 +22,7 @@ const SignIn = ({ setShowLoginPage, setModalShow }) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user.displayName;
-        console.log(userCredential);
+        // console.log(userCredential);
         // ...
         toast.success("Login Success");
         setModalShow(false);

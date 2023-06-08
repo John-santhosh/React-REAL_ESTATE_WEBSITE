@@ -34,14 +34,14 @@ const SignupPage = ({ setShowSignupPage, setShowLoginPage }) => {
         updateProfile(auth.currentUser, {
           displayName: name || "User",
         });
-        console.log(userCredential.user);
+        // console.log(userCredential.user);
         console.log();
         toast.success("Register success");
         setShowSignupPage(false);
         setShowLoginPage(true);
         setTimeout(() => {
           addData(user?.uid, user.displayName, user?.email);
-          console.log(user?.uid, user.displayName, user?.email);
+          // console.log(user?.uid, user.displayName, user?.email);
         }, 2000);
         signOut(auth).then(() => {
           // Sign-out successful.

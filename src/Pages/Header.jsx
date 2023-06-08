@@ -70,7 +70,6 @@ const Header = () => {
             );
           })}
         </ol>
-        {console.log(userLogged)}
         {userLogged ? (
           <Link to="/myprofile">
             <div className="login btn btn-solid  d-md-block d-none">

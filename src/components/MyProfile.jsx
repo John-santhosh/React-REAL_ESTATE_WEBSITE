@@ -18,57 +18,47 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const MyProfile = () => {
   const navigate = useNavigate();
-  const { current_user, userLogged, signout } = useGlobalContext();
+  const [modalShow, setModalShow] = useState(false);
+  const {
+    current_user,
+    userLogged,
+    signout,
+    addUserDetails,
+    current_userDetails,
+  } = useGlobalContext();
+  // console.log(current_userDetails);
   const [details, setDetails] = useState({
     name: "",
     email: "",
     address: "",
     id: 0,
   });
-  const [modalShow, setModalShow] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        readData(uid);
+      }
+    });
+  }, [current_user]);
 
   const readData = async (id) => {
     const docRef = doc(db, id, "details");
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log(docSnap.data());
-      setDetails({ ...details, ...docSnap.data() });
+      addUserDetails({ ...docSnap.data(), id: id });
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
     }
   };
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
-        // console.log(user);
-        setDetails({
-          ...details,
-          name: user.displayName,
-          email: user.email,
-          id: uid,
-        });
-        console.log(uid);
-        readData(details.id);
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-  }, [current_user]);
 
   const signoutUser = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
-      // Sign-out successful.
-      console.log();
       toast.success("Successfully Logged out");
-      setDetails({ name: "", email: "", address: "" });
       navigate("/");
     });
     signout();
@@ -76,7 +66,7 @@ const MyProfile = () => {
   return (
     <Wrapper className="section-center text-center my-5">
       {userLogged ? (
-        <>
+        <div className="">
           <div>
             <img
               src="https://images.unsplash.com/photo-1628260412297-a3377e45006f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
@@ -85,10 +75,11 @@ const MyProfile = () => {
               style={{ borderRadius: "50%", aspectRatio: "1/1" }}
             />
           </div>
-          <h2>{details.name}</h2>
-          <h4 className="text-info">{details.email}</h4>
+          <h2 className="">{current_userDetails.name}</h2>
+          <h4 className="text-info my-3">{current_userDetails.email}</h4>
           <p className="text-secondary fs-4">
-            <ImLocation2 className="fs-4" /> {details.address || "Address Here"}
+            <ImLocation2 className="fs-4" />{" "}
+            {current_userDetails.address || "Address Here"}
           </p>
           <div className="my-4">
             <button
@@ -99,16 +90,16 @@ const MyProfile = () => {
               <BiMessageSquareEdit className="fs-1 ms-3" />
             </button>
             <MyVerticallyCenteredModal
-              details={details}
               setdetails={details}
               show={modalShow}
+              readdata={readData}
               onHide={() => setModalShow(false)}
             />
             <button className="btn btn-page" onClick={signoutUser}>
               Logout
             </button>
           </div>
-        </>
+        </div>
       ) : (
         <div>
           <h2>Please Login</h2>
@@ -119,10 +110,16 @@ const MyProfile = () => {
 };
 
 function MyVerticallyCenteredModal(props) {
-  const { details } = props;
-  const [userDetails, setUserDetails] = useState({ ...details });
-  const editDetails = async (id, name, email, address) => {
-    console.log(id);
+  const { current_userDetails } = useGlobalContext();
+  const [userDetails, setUserDetails] = useState(current_userDetails);
+
+  useEffect(() => {
+    setUserDetails(current_userDetails);
+  }, [current_userDetails]);
+
+  // console.log(userDetails);
+  const editDetails = async (id, name, address) => {
+    // console.log(address);
     updateProfile(auth.currentUser, {
       displayName: name,
     })
@@ -136,26 +133,25 @@ function MyVerticallyCenteredModal(props) {
         // ...
       });
 
-    updateEmail(auth.currentUser, email).then(() => {
-      // Email updated!
-      // ...
-    });
     await updateDoc(doc(db, id, "details"), {
       address: address,
       name: name,
-      email: email,
+    }).then(() => {
+      toast.success("Updated");
+      props.readdata(id);
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     editDetails(
-      details.id,
+      userDetails.id,
       userDetails.name,
-      userDetails.email,
+
       userDetails.address
     );
   };
+  // console.log(userDetails);
   return (
     <Modal
       {...props}
@@ -185,6 +181,7 @@ function MyVerticallyCenteredModal(props) {
               type="text"
               className="form-control"
               value={userDetails.email}
+              disabled
               onChange={(e) =>
                 setUserDetails({ ...userDetails, email: e.target.value })
               }
