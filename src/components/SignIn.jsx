@@ -94,4 +94,4 @@ const SignIn = ({ setShowLoginPage, setModalShow }) => {
   );
 };
 
-export default SignIn;
+export default Signin;
