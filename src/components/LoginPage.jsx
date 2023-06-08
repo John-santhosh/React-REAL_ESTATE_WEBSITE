@@ -2,7 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import SignupPage from "./SignupPage";
 import styled from "styled-components";
 import { useState } from "react";
-import SignIn from "./Signin";
+import SignIn from "./SignIn";
 
 const LoginPage = ({ logo, login, setModalShow }) => {
   const [showSignupPage, setShowSignupPage] = useState(false);
