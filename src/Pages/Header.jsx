@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { navLinks } from "../data";
 import { Link, NavLink } from "react-router-dom";
@@ -6,23 +6,41 @@ import logo from "../assets/skyreal.svg";
 import login from "../assets/images/login.png";
 import { FaRegUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FcGoogle } from "react-icons/fc";
-import { AiFillFacebook } from "react-icons/ai";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Modal from "react-bootstrap/Modal";
 import NavLinks from "../components/NavLinks";
 import LoginPage from "../components/LoginPage";
+import { auth } from "../config/Config";
+import { onAuthStateChanged } from "firebase/auth";
+import { useGlobalContext } from "../context/Context";
 const Header = () => {
+  const { userLogged, createUser } = useGlobalContext();
   const [show, setShow] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  // const [userLogged, setUserLogged] = useState(false);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        // const uid = user.uid;
+        // console.log(user);
+        createUser(user.displayName);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }, [auth]);
   return (
     <Wrapper className="py-3">
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        setModalShow={setModalShow}
       />
       <div className="section-center ">
         <div className="logo  ">
@@ -52,16 +70,25 @@ const Header = () => {
             );
           })}
         </ol>
-        <div
-          onClick={() => {
-            handleClose();
-            setModalShow(true);
-          }}
-          className="login btn btn-solid  d-md-block d-none"
-        >
-          <FaRegUserCircle className="me-3" />
-          Login
-        </div>
+        {console.log(userLogged)}
+        {userLogged ? (
+          <Link to="/myprofile">
+            <div className="login btn btn-solid  d-md-block d-none">
+              My Account
+            </div>
+          </Link>
+        ) : (
+          <div
+            onClick={() => {
+              handleClose();
+              setModalShow(true);
+            }}
+            className="login btn btn-solid  d-md-block d-none"
+          >
+            <FaRegUserCircle className="me-3" />
+            Login
+          </div>
+        )}
       </div>
     </Wrapper>
   );
@@ -69,6 +96,7 @@ const Header = () => {
 
 // modal
 function MyVerticallyCenteredModal(props) {
+  const { setModalShow } = props;
   return (
     <Modal
       {...props}
@@ -78,7 +106,7 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body className="p-0">
-        <LoginPage logo={logo} login={login} />
+        <LoginPage setModalShow={setModalShow} logo={logo} login={login} />
       </Modal.Body>
     </Modal>
   );
